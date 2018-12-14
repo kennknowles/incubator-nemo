@@ -24,57 +24,19 @@ under the License.
         <groupId>org.apache.nemo</groupId>
         <artifactId>nemo-compiler</artifactId>
         <version>0.1-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>nemo-compiler-frontend-beam</artifactId>
-    <name>Nemo Compiler Frontend: Beam</name>
-    <packaging>jar</packaging>
+    <artifactId>nemo-compiler-frontend-beam-spectests</artifactId>
+    <name>Nemo Compiler Frontend: Beam spec tests</name>
 
     <dependencies>
-	      <dependency>
+	<dependency>
             <groupId>org.apache.nemo</groupId>
-            <artifactId>nemo-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.nemo</groupId>
-            <artifactId>nemo-client</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-sdks-java-core</artifactId>
-            <version>${beam.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-sdks-java-core</artifactId>
-	    <version>${beam.version}</version>
-	    <classifier>tests</classifier>
+            <artifactId>nemo-compiler-frontend-beam-spectestsbundle</artifactId>
+	    <version>${project.version}</version>
+	    <classifier>shaded</classifier>
 	    <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-runners-core-java</artifactId>
-            <version>${beam.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-sdks-java-io-hadoop-input-format</artifactId>
-            <version>${beam.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-mapreduce-client-core</artifactId>
-            <version>${hadoop.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.auto.service</groupId>
-            <artifactId>auto-service</artifactId>
-            <version>${auto-service.version}</version>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -91,7 +53,7 @@ under the License.
                 <goals>
                   <goal>test</goal>
                 </goals>
-                <configuration>
+		<configuration>
                   <groups>org.apache.beam.sdk.testing.ValidatesRunner</groups>
                   <excludedGroups>
                     org.apache.beam.sdk.testing.UsesStatefulParDo,
@@ -104,7 +66,7 @@ under the License.
                   <parallel>none</parallel>
                   <failIfNoTests>true</failIfNoTests>
                   <dependenciesToScan>
-                    <dependency>org.apache.beam:beam-sdks-java-core</dependency>
+                    <dependency>org.apache.nemo:nemo-compiler-frontend-beam-spectestsbundle</dependency>
                   </dependenciesToScan>
                   <systemPropertyVariables>
                     <beamTestPipelineOptions>
